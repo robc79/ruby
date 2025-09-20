@@ -1,0 +1,5 @@
+require_relative 'sequence_error'
+require_relative 'genetic_sequence'
+require_relative 'dna'
+require_relative 'rna'
+require_relative 'nucleotide'
