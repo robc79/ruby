@@ -31,6 +31,16 @@ def prompt_quantity(idx)
   qty
 end
 
+def calculate_subtotal(quantities, prices)
+  subtotal = BigDecimal(0)
+
+  3.times do |idx|
+    subtotal += prices[idx] * quantities[idx]
+  end
+
+  subtotal
+end
+
 prices = []
 quantities = []
 
@@ -40,15 +50,10 @@ quantities = []
   quantities << prompt_quantity(shifted_idx)
 end
 
-subtotal = BigDecimal(0)
-
-3.times do |idx|
-  subtotal += prices[idx] * quantities[idx]
-end
-
+subtotal = calculate_subtotal(quantities, prices)
 total = subtotal * TAX_RATE
 tax = total - subtotal
 
-puts "Subtotal: £#{subtotal.to_s('F')}"
-puts "Tax: £#{tax.to_s('F')}"
-puts "Total: £#{total.to_s('F')}"
+puts "Subtotal: £#{subtotal.round(2).to_s('F')}"
+puts "Tax: £#{tax.round(2).to_s('F')}"
+puts "Total: £#{total.round(2).to_s('F')}"
