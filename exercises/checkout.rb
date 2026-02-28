@@ -2,6 +2,7 @@
 require 'bigdecimal'
 
 TAX_RATE = 1.055
+NUM_ITEMS = 3
 
 def prompt_price(idx)
   price = BigDecimal(0)
@@ -54,7 +55,7 @@ def prompt_for_items(num_items)
   return prices, quantities
 end
 
-prices, quantities = prompt_for_items 3
+prices, quantities = prompt_for_items NUM_ITEMS
 subtotal = calculate_subtotal(prices, quantities)
 total = subtotal * TAX_RATE
 tax = total - subtotal
