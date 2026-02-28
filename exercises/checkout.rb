@@ -51,10 +51,10 @@ def prompt_for_items(num_items)
     quantities << prompt_quantity(shifted_idx)
   end
 
-  { prices: prices, quantities: quantities }
+  return prices, quantities
 end
 
-prices, quantities = prompt_for_items(3).values_at(:prices, :quantities)
+prices, quantities = prompt_for_items 3
 subtotal = calculate_subtotal(prices, quantities)
 total = subtotal * TAX_RATE
 tax = total - subtotal
